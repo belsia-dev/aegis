@@ -103,3 +103,13 @@ sudo chmod 644 /etc/profile.d/aegis_guard.sh
 - Run the service as `root` if you want direct firewall access with the default configuration.
 - If you change `response.privilege_mode` to `sudo`, make sure the runtime user has non-interactive sudo permission for the required firewall commands.
 - Default dashboard credentials come from `/etc/aegis/config.yaml`.
+
+# Debian Package
+
+To build a `.deb` package for APT distribution on Debian or Ubuntu:
+
+```bash
+./scripts/build_deb.sh
+```
+
+APT repository publishing steps are documented in `docs/APT_REPOSITORY.md`.

@@ -1,0 +1,25 @@
+Source: aegis
+Section: admin
+Priority: optional
+Maintainer: belsia-dev <jinupark016@gmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Homepage: https://github.com/belsia-dev/aegis
+
+Package: aegis
+Architecture: all
+Depends:
+ ${misc:Depends},
+ python3,
+ python3-aiohttp,
+ python3-fastapi,
+ python3-uvicorn,
+ python3-yaml,
+ iptables
+Description: adaptive host firewall and threat monitoring service
+ AEGIS monitors system logs, processes, persistence locations, traffic,
+ and script execution activity, then applies bans through the local firewall.
+ It exposes a web dashboard for events, bans, traffic, and script analysis.

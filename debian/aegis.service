@@ -1,0 +1,30 @@
+[Unit]
+Description=AEGIS host firewall and threat monitoring service
+Documentation=https://github.com/belsia-dev/aegis
+After=network-online.target syslog.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/usr/lib/aegis
+ExecStart=/usr/bin/python3 /usr/lib/aegis/main.py --config /etc/aegis/config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+Environment=PYTHONUNBUFFERED=1
+RuntimeDirectory=aegis
+LogsDirectory=aegis
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=aegis
+NoNewPrivileges=no
+PrivateTmp=yes
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/var/log/aegis /run/aegis
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_DAC_READ_SEARCH
+
+[Install]
+WantedBy=multi-user.target

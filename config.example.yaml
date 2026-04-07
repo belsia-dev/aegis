@@ -51,6 +51,7 @@ whitelist:
   ips:
     - 127.0.0.1
     - ::1
+    - # your IP addresses here
   cidrs:
     - 10.0.0.0/8
     - 172.16.0.0/12
@@ -100,7 +101,7 @@ integrations:
     timeout_seconds: 5
 
 api:
-  host: 127.0.0.1
+  host: 127.0.0.1 # change to 0.0.0.0 for external access
   port: 8731
   username: admin
   password: "CHANGE_THIS_PASSWORD"

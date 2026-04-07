@@ -1,0 +1,5 @@
+aegis (1.0.0) unstable; urgency=medium
+
+  * Add Debian packaging for binary .deb builds and APT repository use.
+
+ -- belsia-dev <jinupark016@gmail.com>  Tue, 07 Apr 2026 20:35:00 +0200
