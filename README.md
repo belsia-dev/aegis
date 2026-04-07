@@ -13,7 +13,7 @@ Aegis is a modern version of a fail2ban in which contains much more patterns and
 
 # HOW It works
 
-Aegis basically scans logs that are pre setted in the config and ban the suspicious ips. It normally uses a score system in which as the attack is going on, the more the threat score it gets. If it goes over 100, it bans ip With "IPTABLES". ```
+Aegis basically scans logs that are pre setted in the config and ban the suspicious ips. It normally uses a score system in which as the attack is going on, the more the threat score it gets. If it goes over 100, it bans ip With "IPTABLES". 
 --
 # HOW TO INSTALL
 
