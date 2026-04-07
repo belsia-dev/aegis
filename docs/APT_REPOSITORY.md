@@ -6,7 +6,7 @@ Run these commands on a Debian or Ubuntu builder:
 
 ```bash
 sudo apt update
-sudo apt install -y build-essential debhelper dh-python dpkg-dev gnupg apt-utils
+sudo apt install -y build-essential debhelper dpkg-dev gnupg apt-utils
 cd /path/to/aegis
 ./scripts/build_deb.sh
 ```
