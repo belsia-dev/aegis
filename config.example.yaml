@@ -1,0 +1,109 @@
+general:
+  log_level: INFO
+  log_file: /var/log/aegis/aegis.json
+  audit_file: /var/log/aegis/audit.json
+  dry_run: false
+
+log_sources:
+  - path: /var/log/auth.log
+    type: auth
+  - path: /var/log/syslog
+    type: syslog
+  - path: /var/log/kern.log
+    type: kernel
+  - path: /var/log/nginx/access.log
+    type: nginx_access
+  - path: /var/log/nginx/error.log
+    type: nginx_error
+  - path: /var/log/apache2/access.log
+    type: apache_access
+  - path: /var/log/mail.log
+    type: mail
+
+detection:
+  ssh_max_failures: 5
+  ssh_window_seconds: 60
+  http_login_max_failures: 10
+  http_login_window_seconds: 30
+  smtp_max_failures: 5
+  smtp_window_seconds: 60
+  imap_max_failures: 5
+  imap_window_seconds: 60
+  geo_velocity_countries: 2
+  geo_velocity_window_seconds: 300
+  credential_stuffing_usernames: 5
+  credential_stuffing_window_seconds: 120
+  score_warn_threshold: 40
+  score_ban_threshold: 70
+  abuseipdb_instant_ban_score: 90
+  adaptive_enabled: true
+  adaptive_trigger_bans_per_minute: 3
+
+response:
+  firewall_backend: iptables
+  ban_duration_seconds: 3600
+  permanent_ban_score: 95
+  rate_limit_requests: 30
+  unban_interval: 60
+  privilege_mode: direct
+
+whitelist:
+  ips:
+    - 127.0.0.1
+    - ::1
+  cidrs:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+  protect_self: true
+
+process_monitor:
+  enabled: true
+  scan_interval: 15
+  suspicious_exec_paths:
+    - /tmp
+    - /var/tmp
+    - /dev/shm
+  suspicious_outbound_ports:
+    - 4444
+    - 1337
+    - 9999
+    - 31337
+
+persistence_monitor:
+  enabled: true
+  watch_cron_dirs:
+    - /etc/cron.d
+    - /etc/cron.daily
+    - /etc/cron.hourly
+    - /var/spool/cron/crontabs
+  watch_systemd_dirs:
+    - /etc/systemd/system
+    - /lib/systemd/system
+  watch_startup_files:
+    - /etc/rc.local
+    - /etc/profile.d
+    - /etc/environment
+  scan_interval: 30
+
+integrations:
+  abuseipdb:
+    enabled: true
+    api_key: "YOUR_ABUSEIPDB_KEY_HERE"
+    ttl_seconds: 3600
+    max_age_days: 30
+    timeout_seconds: 5
+  ipinfo:
+    enabled: true
+    api_key: ""
+    ttl_seconds: 86400
+    timeout_seconds: 5
+
+api:
+  host: 127.0.0.1
+  port: 8731
+  username: admin
+  password: "CHANGE_THIS_PASSWORD"
+  cors_origins:
+    - "http://localhost:8731"
+  event_buffer_size: 500

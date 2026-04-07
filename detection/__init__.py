@@ -1,0 +1,1 @@
+from detection.script_analyzer import ScriptAnalyzer
