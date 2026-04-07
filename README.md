@@ -5,9 +5,10 @@
 /    |    \  ___// /_/  >   |\___ \ 
 \____|__  /\___  >___  /|___/____  >
         \/     \/_____/          \/ 
+
+        Version 1.0.0 Made by Belsia-dev
 ```
 # Aegis : Advanced Firewall, designed to ban multiple hosts that is causing problems.
---
 
 Aegis is a modern version of a fail2ban in which contains much more patterns and the diefference is that aegis has real time monitor ( web gui) and fail2ban doesn't. Aegis normally scans logs like /var/log/auth.log and bans ips that exceed the maximum threat score.
 
@@ -102,5 +103,3 @@ sudo chmod 644 /etc/profile.d/aegis_guard.sh
 - Run the service as `root` if you want direct firewall access with the default configuration.
 - If you change `response.privilege_mode` to `sudo`, make sure the runtime user has non-interactive sudo permission for the required firewall commands.
 - Default dashboard credentials come from `/etc/aegis/config.yaml`.
-
-Protect Your Server Well!
